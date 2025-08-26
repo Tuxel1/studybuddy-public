@@ -1,0 +1,210 @@
+/* General Settings */
+
+:root {
+    /* https://coolors.co/102542-f87060-cdd7d6-b3a394-fff4ec */
+    --base-color: #FFF4EC;
+    --main-color: #F87060;
+    --text-color: #102542;
+    --neutral-color: #B3A394;
+    --accent-color: #CDD7D6;
+}
+
+body {
+    background-color: var(--base-color);
+    font-family: monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+}
+
+.top-button {
+    z-index: 1;
+}
+
+a {
+    color: var(--text-color);
+}
+
+.blocky-emphasis {
+    color: var(--main-color);
+    text-shadow: -2px 0 var(--text-color), 0 2px var(--text-color), 2px 0 var(--text-color), 0 -2px var(--text-color);
+}
+
+/* Header stuff */
+
+.myheader {
+    color: var(--main-color);
+    text-shadow: -2px 0 var(--text-color), 0 2px var(--text-color), 2px 0 var(--text-color), 0 -2px var(--text-color);
+}
+
+.logo {
+    width: 140px !important;
+    height: 140px !important;
+    color: var(--main-color);
+    border: 4px solid var(--text-color);
+    border-radius: 50%;
+    background-color: var(--text-color);
+}
+
+.speech-bubble {
+    /* width: 200px; */
+    background: white;
+    /* text-align: center; */
+    padding:20px;
+    position:relative;
+    border-radius:15px;
+    border: 4px solid var(--text-color);
+    box-shadow: 5px 5px var(--text-color);
+}
+
+.triangle-left:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 15px solid transparent;
+    border-right: 15px solid var(--text-color);
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    left: -30px;
+    top: 40%;
+}
+
+.triangle-top:before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid var(--text-color);
+    top: -30px;
+    left: 45%;
+}
+
+/* Back button */
+
+.back-button, .back-button:hover, .back-button:focus, .back-button:active, .back-button:visited{
+    color: var(--main-color) !important;
+    background-color: var(--text-color) !important;
+    box-shadow: 5px 5px var(--main-color), 5px 5px 1px var(--text-color);
+    transition: 0.1s;
+}
+
+.back-button:hover {
+    transform: scale(1.03);
+}
+
+/* Cards */
+
+.card{
+    background-color: var(--main-color);
+    color: var(--text-color);
+    box-shadow: 5px 5px var(--text-color);
+    border: 3px solid var(--text-color);
+    transition: 0.1s;
+}
+
+.card a, .card .btn-link {
+    color: var(--text-color);
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.new-item-card {
+    color: var(--main-color);
+    background-color: var(--text-color);
+    box-shadow: 5px 5px var(--main-color), 5px 5px 1px var(--text-color);
+}
+
+.new-item-card a {
+    color: var(--main-color);
+}
+
+hr {
+    border-color: var(--text-color);
+    opacity: 1;
+    border-width: 2px;
+}
+
+/* Progress bar */
+
+.progress {
+    background-color: var(--text-color);
+    height: 20px;
+    border: 4px solid var(--text-color);
+}
+.progress-bar {
+    background-color: var(--main-color);
+}
+
+.progress-bar-inblock {
+    background-color: var(--base-color);
+}
+
+/* Modals */
+
+.modal-content {
+    color: var(--text-color);
+    background-color: var(--base-color);
+    border: 3px solid var(--text-color);
+    box-shadow: 5px 5px var(--text-color);
+}
+
+.modal-content .btn, .modal-content .btn-close, .modal-content .btn:hover, .modal-content .btn:focus, .modal-content .btn:active, .modal-content .btn:visited {
+    color: var(--text-color);
+    background-color: var(--main-color);
+    border: 3px solid var(--text-color);
+    box-shadow: 5px 5px var(--text-color);
+    opacity: 1; /* Only for btn-close */
+}
+
+.modal-header {
+    border-bottom: none;
+
+}
+
+.modal-footer {
+    border-top: 2px solid var(--text-color);
+
+}
+
+.modal-body .form-control {
+    background-color: white;
+    color: var(--text-color);
+    border: 2px solid var(--text-color);
+}
+
+.modal-body .form-control:focus {
+    box-shadow: 0 0 1px 2px var(--main-color);
+}
+
+/* animation */
+
+.wiggle-in {
+    animation: fadeIn 0.2s ease-in forwards, wiggle 0.4s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+    opacity: 1;
+    }
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+   30% { transform: rotate(3deg); }
+   60% { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
+}

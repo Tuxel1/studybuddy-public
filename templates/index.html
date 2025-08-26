@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block dialogue %}
+    <div class="">
+        <h1 class="">Hi, I am <span class="blocky-emphasis">Study Buddy</span>!</h1>
+        <h2 class="">What do you want to learn today?</h2>
+    </div>
+{% endblock %}
+
+{%block body %}
+    <div class="container text-center px-5">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% for item in skills %}
+                <div class="col">
+                    <div class="card h-100 text-start">
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <div class="row align-items-center">
+                                <div class="col text-start">
+                                    <a class="card-block stretched-link text-decoration-none" href="/skill{{ item.skill_id }}" role="button">
+                                        <h5>{{ item.skill_name }}</h5>
+                                    </a>
+                                </div>
+
+                                <div class="col-auto text-end">
+                                    <!-- Delete button - DO I WANT TO ADD A CONFIRM WINDOW??? -->
+                                    <div class="position-relative top-button" role="button">
+                                        <form method="POST" action="/delete_item">
+                                            <input type="hidden" name="item_type" value="skill">
+                                            <input type="hidden" name="item_id" value="{{ item.skill_id }}">
+                                            <button type="submit" class="btn btn-link rounded-circle">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon">
+                                                    <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                                    <path fill="currentColor" d="M135.2 17.7L128 32 32 32C14.3 32 0 46.3 0 64S14.3 96 32 96l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 0-7.2-14.3C307.4 6.8 296.3 0 284.2 0L163.8 0c-12.1 0-23.2 6.8-28.6 17.7zM416 128L32 128 53.2 467c1.6 25.3 22.6 45 47.9 45l245.8 0c25.3 0 46.3-19.7 47.9-45L416 128z"/>
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="col">
+                <div class="card new-item-card h-100">
+                    <div class="card-body d-flex flex-column justify-content-center">
+                        <a class="card-block stretched-link text-decoration-none" data-bs-toggle="modal" data-bs-target="#addSkillModal" role="button">
+                            <h5>
+                                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                    <path fill="currentColor" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"/>
+                                </svg>
+                                Learn a new skill
+                            </h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Add Skill -->
+    <div class="modal fade" id="addSkillModal" tabindex="-1" aria-labelledby="addSkillModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form method="POST" action="/add_item">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="addSkillModalLabel">Learn a new skill</h1>
+                        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <input type="hidden" name="item_type" value="skill">
+                                <input type="text" class="form-control" name="item_name" placeholder="Enter skill name" autocomplete="off">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Start Learning</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block back %}
+    <div class="container px-5 py-3 hidden">
+        <a href="/" class="btn back-button">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                <path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            Back
+        </a>
+    </div>
+{% endblock %}
